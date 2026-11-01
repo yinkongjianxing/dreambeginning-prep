@@ -1,0 +1,44 @@
+#include<iostream>
+using namespace std;
+
+
+int partition(int arr[], int left, int right) {
+    int pivot = arr[left];
+    while(left<right){
+    	while(arr[right]>=pivot &&left<right){
+    		 	right--;
+    	} arr[left]=arr[right];
+
+    	while(arr[left]<=pivot &&left<right){
+		left++;
+		}
+			arr[right]=arr[left];
+    		} 
+    		arr[left]=pivot;
+
+    return left; 
+}
+
+void quickSort(int arr[], int left, int right) {
+    if (left >= right) return;
+    
+    int mid = partition(arr, left, right);
+    
+    quickSort(arr, left, mid - 1); 
+    quickSort(arr, mid + 1, right);
+}
+
+int main() {
+	int arr[9]={1,3,5,7,9,2,4,6,8}; 
+	int length=sizeof(arr)/sizeof(arr[0]);
+	
+	quickSort(arr,0,length-1);
+	for(int i=0;i<length;i++){
+		cout<<arr[i]<<endl;
+	}
+	return 0;
+	 
+	
+	
+	
+}
